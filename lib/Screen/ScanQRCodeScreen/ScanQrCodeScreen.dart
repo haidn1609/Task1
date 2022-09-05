@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
@@ -29,25 +28,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       });
     });
   }
-  //
-  // @override
-  // void reassemble() {
-  //   super.reassemble();
-  //   if (controller != null) {
-  //     if (Platform.isAndroid) {
-  //       controller?.pauseCamera();
-  //     }
-  //     controller?.resumeCamera();
-  //   }
-  // }
-  //
-  // @override
-  // void dispose() {
-  //   if (controller != null) {
-  //     controller?.dispose();
-  //   }
-  //   super.dispose();
-  // }
+
 
   @override
   Widget build(BuildContext context) {
