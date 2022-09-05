@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "13034273849",
+    "firebase_url": "https://test-project-420b5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "test-project-420b5",
+    "storage_bucket": "test-project-420b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13034273849:android:e989523b9c3f63124be1e8",
+        "android_client_info": {
+          "package_name": "com.example.task1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13034273849-d5fhb4jo8behk99h375sv1njkeaa8ama.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3kAZWgBZSb5PRy2LIigXP7OyDiA_nokA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13034273849-d5fhb4jo8behk99h375sv1njkeaa8ama.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "13034273849-50ecaqa4dglfccv1i9feluduosdhvvhm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testProject"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13034273849:android:bacb9711968e1b5d4be1e8",
+        "android_client_info": {
+          "package_name": "com.example.test_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13034273849-d5fhb4jo8behk99h375sv1njkeaa8ama.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3kAZWgBZSb5PRy2LIigXP7OyDiA_nokA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13034273849-d5fhb4jo8behk99h375sv1njkeaa8ama.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "13034273849-50ecaqa4dglfccv1i9feluduosdhvvhm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

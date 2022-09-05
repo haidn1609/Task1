@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
+import 'package:task1/provider/hiveBox.dart';
 
 class TaskProvider extends ChangeNotifier {
   //value field
@@ -38,21 +40,26 @@ class TaskProvider extends ChangeNotifier {
     curentDoc = value;
     notifyListeners();
   }
-
+  void setListDocSplash() async {
+    listDoc = getAllListHive();
+  }
   void addDoc() {
     List<String> lists = listBase64.toList();
     if (curentDoc == -1) {
       listDoc.add(lists);
+      addHiveListBase64(listDoc.length - 1, lists);
     } else {
       // listBase64.replaceRange(0, listBase64.length, listDoc.elementAt(curentDoc));
       listDoc.elementAt(curentDoc).clear();
       listDoc.elementAt(curentDoc).addAll(lists);
+      addHiveListBase64(curentDoc, lists);
     }
     notifyListeners();
   }
 
   void deleteDoc(int index) {
     listDoc.removeAt(index);
+    removeHiveListBase64(index);
     notifyListeners();
   }
 }

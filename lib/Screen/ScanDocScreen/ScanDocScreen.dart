@@ -27,7 +27,7 @@ class _ScanDocScreenState extends State<ScanDocScreen> {
     }
   }
 
-  Future _showDialog(BuildContext context) async {
+  Future _showDialogSave(BuildContext context) async {
     return showDialog(
       context: context,
       builder: (context) {
@@ -58,6 +58,36 @@ class _ScanDocScreenState extends State<ScanDocScreen> {
     );
   }
 
+  Future _showDialogCancel(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Consumer<TaskProvider>(
+          builder: (context, value, child) => AlertDialog(
+            title: const Text(
+                "Bạn chưa bấm lưu ảnh bạn chắc chắn muốn thoát chứ?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/HomeScreen');
+                  },
+                  child: const Center(
+                    child: Text("Có"),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Center(
+                    child: Text("Không"),
+                  ))
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskProvider>(
@@ -67,14 +97,23 @@ class _ScanDocScreenState extends State<ScanDocScreen> {
             title: const Text("Scan doc"),
             leading: IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/HomeScreen');
+                  if ((value.curentDoc == -1 && value.listBase64.isNotEmpty) ||
+                      (value.curentDoc != -1 &&
+                          value.listBase64.length >
+                              value.listDoc
+                                  .elementAt(value.curentDoc)
+                                  .length)) {
+                    _showDialogCancel(context);
+                  } else {
+                    Navigator.pushNamed(context, '/HomeScreen');
+                  }
                 },
                 icon: const Icon(CupertinoIcons.back)),
             actions: <Widget>[
               IconButton(
                   onPressed: () {
                     if (value.listBase64.isEmpty) {
-                      _showDialog(context);
+                      _showDialogSave(context);
                     } else {
                       value.addDoc();
                       Navigator.pushNamed(context, '/HomeScreen');
@@ -105,12 +144,11 @@ class _ScanDocScreenState extends State<ScanDocScreen> {
                             ScannerLabelsConfig.ANDROID_BMW_LABEL: "B & W"
                           });
                       // `scannedDoc` will be the image file scanned from scanner
-                    } on PlatformException catch (e) {
-                    }
+                    } on PlatformException catch (e) {}
                     if (scan != null) {
-                      final bytes = scan?.readAsBytesSync();
+                      final bytes = scan.readAsBytesSync();
                       String base64 =
-                          "data:image/png;base64," + base64Encode(bytes!);
+                          "data:image/png;base64," + base64Encode(bytes);
                       value.addBase64(base64);
                       await scan.delete();
                     }
@@ -136,12 +174,11 @@ class _ScanDocScreenState extends State<ScanDocScreen> {
                             ScannerLabelsConfig.ANDROID_BMW_LABEL: "B & W"
                           });
                       // `scannedDoc` will be the image file scanned from scanner
-                    } on PlatformException catch (e) {
-                    }
+                    } on PlatformException catch (e) {}
                     if (scan != null) {
-                      final bytes = scan?.readAsBytesSync();
+                      final bytes = scan.readAsBytesSync();
                       String base64 =
-                          "data:image/png;base64," + base64Encode(bytes!);
+                          "data:image/png;base64," + base64Encode(bytes);
                       value.addBase64(base64);
                       await scan.delete();
                     }
